@@ -14,16 +14,23 @@
  * limitations under the License.
  */
 
-package com.android.ex.chips;
+package com.android.ex.chips.recipientchip;
 
-import android.os.Build;
+import android.graphics.Canvas;
+import android.graphics.Rect;
 
-public class ChipsUtil {
+/**
+ * RecipientChip defines a drawable object that contains information relevant to a
+ * particular recipient.
+ */
+public interface DrawableRecipientChip extends BaseRecipientChip {
+    /**
+     * Get the bounds of the chip; may be 0,0 if it is not visibly rendered.
+     */
+    Rect getBounds();
 
     /**
-     * @return true when the caller can use Chips UI in its environment.
+     * Draw the chip.
      */
-    public static boolean supportsChipsUi() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH;
-    }
+    void draw(Canvas canvas);
 }
